@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>StellerX - NASA Space Challenge</title>
+    
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
+    
+    <link rel="stylesheet" href="style/style.css">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Orbitron:wght@400;500;700&display=swap" rel="stylesheet">
+    
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+    
+    <script src="script/script.js" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/satellite.js/4.1.5/satellite.min.js"></script>
+<script src="https://unpkg.com/@joergdietrich/leaflet.terminator"></script>
+</head>
+<body>
+
+    <div class="video-background">
+        <video autoplay muted loop id="bg-video">
+            <source src="assets/background.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+    </div>
+
+    <nav class="navbar">
+        <div class="navbar-container">
+            <a href="#home" class="nav-logo">
+                <img src="assets/logo.png" alt="StellerX Logo">
+            </a>
+            
+            <ul class="nav-menu">
+                </ul>
+
+            <div class="menu-toggle" id="mobile-menu">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </div>
+    </nav>
+
+    <aside class="sidebar" id="sidebar">
+        <ul class="sidebar-menu">
+            <li><a href="#home" class="sidebar-link">Home</a></li>
+            <li><a href="#stories" class="sidebar-link">All Stories</a></li>
+            <li><a href="#story-tracker" class="sidebar-link sub-link">Spacecraft Tracker</a></li>
+            <li><a href="#story-postcards" class="sidebar-link sub-link">Mars Postcards</a></li>
+            <li><a href="#story-calendar" class="sidebar-link sub-link">Cosmic Calendar</a></li>
+            <li><a href="#story-journal" class="sidebar-link sub-link">Earth Journal</a></li>
+            <li><a href="#visuals" class="sidebar-link">Visuals</a></li>
+            <li><a href="#impact" class="sidebar-link">Impact</a></li>
+        </ul>
+    </aside>
+
+    <main>
+        <section id="home" class="content-section">
+            <div class="section-container">
+                <h1>Experience NASA's Universe, Personalized</h1>
+                <p class="subtitle">
+                    StellerX bridges the gap between cosmic data and human curiosity. We transform NASA's incredible discoveries into interactive stories.
+                    <br>
+                    Track live spacecraft, see a snapshot of the cosmos on your birthday, or receive a postcard from Mars. Your journey begins now.
+                </p>
+                <a href="#stories" class="cta-button">Explore Our Projects</a>
+            </div>
+            <a href="#stories" class="scroll-down-arrow" aria-label="Scroll down">
+                <span></span>
+            </a>
+        </section>
+
+        <section id="stories" class="content-section parallax-section">
+    <div class="section-container">
+        <h2>Our Stories</h2>
+        <p>Bringing NASA's data to life with interactive experiences.</p>
+        <div class="stories-grid">
+            <div class="story-card" id="story-tracker">
+                <h3>"Where Is It Now?" Spacecraft Tracker</h3>
+                <p>Instead of seeing space as distant, this tracker makes it feel immediate and alive. Watch in real-time as the ISS speeds over your city at 28,000 km/h. We transform raw telemetry data into a living map, showing you exactly where humanity's greatest explorers are right now.</p>
+            </div>
+            <div class="story-card" id="story-postcards">
+                <h3>Postcards from Mars</h3>
+                <p>This project turns raw data into personal mementos from another planet. Choose a rover like Curiosity or Perseverance and a Martian day (Sol) to receive a unique "postcard." Suddenly, you're not just looking at photos—you're part of the adventure, receiving a personal memory from millions of kilometers away.</p>
+            </div>
+            <div class="story-card" id="story-calendar">
+                <h3>Your Cosmic Calendar</h3>
+                <p>What did the universe look like on your birthday? This personal time machine connects your story to the story of the cosmos. Pick any date that's special to you, and we'll fetch NASA's "Astronomy Picture of the Day" from that moment, turning it into a beautiful cosmic postcard from your past.</p>
+            </div>
+            <div class="story-card" id="story-journal">
+                <h3>Earth Watcher's Journal</h3>
+                <p>See our planet as astronauts do—a glowing blue marble against the blackness. Using daily images from a satellite 1.5 million kilometers away, this project turns our world into a visual journal. Flip through the days to appreciate the simple, stunning beauty of our living home.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+        <section id="visuals" class="content-section parallax-section">
+            <div class="section-container">
+                <h2>Live Visuals: ISS Tracker</h2>
+                <p>Follow the International Space Station as it orbits Earth in real-time. The map updates every 5 seconds.</p>
+                <div id="iss-map"></div>
+                <div class="telemetry-data">
+    <p><strong>Latitude:</strong><br> <span id="lat">--</span>°</p>
+    <p><strong>Longitude:</strong><br> <span id="lon">--</span>°</p>
+    <p><strong>Altitude:</strong><br> <span id="alt">--</span> km</p>
+    <p><strong>Velocity:</strong><br> <span id="vel-kmh">--</span> km/h &<br> <span id="vel-mph">--</span> mph</p>
+</div>
+            </div>
+        </section>
+
+        <section id="impact" class="content-section parallax-section">
+            <div class="section-container">
+                <h2>Our Impact</h2>
+                <p class="subtitle" style="margin-bottom: 3rem;">
+                    We believe space exploration should be for everyone. Our mission is to break down the barriers between vast cosmic data and personal human experience. We transform raw information into stories that connect, educate, and inspire.
+                </p>
+                <div class="stories-grid" style="text-align: left;">
+                    <div class="story-card">
+                        <h3>Making the Cosmos Personal</h3>
+                        <p>Our projects connect your personal story to the grand narrative of the universe... [content continues]</p>
+                    </div>
+                    <div class="story-card">
+                        <h3>Fostering a Deeper Connection with Earth</h3>
+                        <p>With the <strong>Earth Watcher's Journal</strong>, we turn daily satellite images into a personal diary of our planet... [content continues]</p>
+                    </div>
+                    <div class="story-card">
+                        <h3>Bringing Exploration to Life, Right Now</h3>
+                        <p>Space can often feel distant and slow. The <strong>"Where Is It Now?" Spacecraft Tracker</strong> changes that... [content continues]</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>© 2025 StellerX | Made for the NASA Space Challenge</p>
+    </footer>
+
+</body>
+</html>
