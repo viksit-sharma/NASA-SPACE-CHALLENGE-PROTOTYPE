@@ -1,6 +1,6 @@
 # StellerX 🛰️
 
-(./assets/logo.png)
+(/assets/logo.png)
 
 *Bringing NASA's universe to your fingertips through interactive, personal stories.*
 
