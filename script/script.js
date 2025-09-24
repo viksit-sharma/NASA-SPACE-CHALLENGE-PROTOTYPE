@@ -55,7 +55,7 @@ document.addEventListener('DOMContentLoaded', () => {
         L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/Reference/World_Boundaries_and_Places/MapServer/tile/{z}/{y}/{x}').addTo(issMap);
 
         const issIcon = L.icon({
-            iconUrl: '/assets/iss.png',
+            iconUrl: '/assets/ISS_spacecraft_model_1.png',
             iconSize: [85, 85],
             iconAnchor: [42, 42],
             className: 'iss-icon-pulse'
@@ -97,4 +97,5 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
 });
+
 
