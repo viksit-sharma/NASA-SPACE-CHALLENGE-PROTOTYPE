@@ -1,7 +1,5 @@
 # StellerX 🛰️
 
-(/assets/logo.png)
-
 *Bringing NASA's universe to your fingertips through interactive, personal stories.*
 
 [![Challenge](https://img.shields.io/badge/NASA%20Space%20Apps-Challenge%202025-blue)](https://www.spaceappschallenge.org/)
